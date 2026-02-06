@@ -573,72 +573,86 @@ body.dark .about-card {
   transform: scale(1.12);
 }
 
-/* ================= MOBILE RESPONSIVE ================= */
+/* ===================================================== */
+/* ============ MOBILE NAVBAR FIX (NO DELETE) ========== */
+/* ===================================================== */
+
+.burger-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Overlay base (hidden) */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0b2e6f, #020617);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  transform: translateY(-120%);
+  transition: transform 0.45s cubic-bezier(.4,0,.2,1);
+  z-index: 999999; /* MÁS que navbar */
+}
+
+/* Activo */
+.mobile-menu.show {
+  transform: translateY(0);
+}
+
+.mobile-menu a {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.mobile-menu a:hover {
+  transform: scale(1.08);
+  opacity: 0.85;
+}
+
+.close-mobile {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* ========== SOLO MOVIL ========== */
 @media (max-width: 768px) {
 
-  section {
-    padding: 6rem 1.5rem;
-    min-height: auto;
-  }
-
-  /* NAVBAR */
-  .nav-inner {
-    padding: 10px 16px;
-  }
-
   .nav-center {
+    display: none !important;
+  }
+
+  .burger-btn {
+    display: block;
+  }
+
+  /* Oculta botones extra si quieres */
+  .contact-btn {
     display: none;
-  }
-
-  /* HERO */
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    gap: 2rem;
-  }
-
-  .hero-left img {
-    width: 220px;
-    height: 220px;
-  }
-
-  .hero-right h1 {
-    font-size: 2rem;
-  }
-
-  .hero-right p {
-    font-size: 1rem;
-  }
-
-  /* ABOUT */
-  .about-card {
-    grid-template-columns: 1fr;
-    padding: 30px;
-    gap: 24px;
-  }
-
-  .about-left h2 {
-    font-size: 2rem;
-  }
-
-  .about-right {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  /* TECH */
-  .tech-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-
-  /* CONTACT */
-  .contact-form {
-    max-width: 100%;
-  }
-
-  .contact h2 {
-    font-size: 2rem;
   }
 }
 
+/* ========== DESKTOP ========== */
+@media (min-width: 769px) {
 
+  .burger-btn {
+    display: none !important;
+  }
+
+  .mobile-menu {
+    display: none !important;
+  }
+}

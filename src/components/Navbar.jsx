@@ -1,18 +1,14 @@
-import { Moon, Sun, Globe } from "lucide-react";
+import { Moon, Sun, Globe, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 
 function Navbar({ dark, setDark, lang, setLang }) {
   const [openContact, setOpenContact] = useState(false);
   const [sent, setSent] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const toggleTheme = () => {
-    setDark(prev => !prev);
-  };
-
-  const toggleLang = () => {
-    setLang(prev => (prev === "es" ? "en" : "es"));
-  };
+  const toggleTheme = () => setDark(p => !p);
+  const toggleLang = () => setLang(p => (p === "es" ? "en" : "es"));
 
   const handleSend = () => {
     setSent(true);
@@ -23,9 +19,7 @@ function Navbar({ dark, setDark, lang, setLang }) {
   };
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 30);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -37,65 +31,66 @@ function Navbar({ dark, setDark, lang, setLang }) {
           <div className="nav-left">Julio</div>
 
           <nav className="nav-center">
-            <a href="#inicio">{lang === "es" ? "Inicio" : "Home"}</a>
-
-            <a href="#tecnologias">
-              {lang === "es" ? "Tecnologías" : "Skills"}
-            </a>
-
-            <a href="#sobre-mi">{lang === "es" ? "Sobre mí" : "About"}</a>
-
-            <a href="#proyectos">{lang === "es" ? "Proyectos" : "Projects"}</a>
+            <a href="#inicio">Inicio</a>
+            <a href="#tecnologias">Tecnologías</a>
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#proyectos">Proyectos</a>
           </nav>
 
           <div className="nav-right">
-            <button
-              className="contact-btn"
-              onClick={() => setOpenContact(true)}
-            >
+            <button className="contact-btn" onClick={() => setOpenContact(true)}>
               {lang === "es" ? "Contactemos" : "Contact"}
             </button>
 
-            <button
-              className="icon-btn"
-              onClick={toggleLang}
-              aria-label="Cambiar idioma"
-            >
+            <button className="icon-btn" onClick={toggleLang}>
               <Globe size={18} />
             </button>
 
-            <button
-              className="icon-btn"
-              onClick={toggleTheme}
-              aria-label="Cambiar tema"
-            >
+            <button className="icon-btn" onClick={toggleTheme}>
               {dark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
+            {/* Burger solo móvil */}
+            <button
+              className="burger-btn"
+              onClick={() => setMobileOpen(true)}
+            >
+              <Menu size={22} />
             </button>
           </div>
         </div>
       </header>
+
+      {/* MOBILE MENU */}
+      <div className={`mobile-menu ${mobileOpen ? "show" : ""}`}>
+        <button
+          className="close-mobile"
+          onClick={() => setMobileOpen(false)}
+        >
+          <X size={28} />
+        </button>
+
+        <a href="#inicio" onClick={() => setMobileOpen(false)}>Inicio</a>
+        <a href="#tecnologias" onClick={() => setMobileOpen(false)}>Tecnologías</a>
+        <a href="#sobre-mi" onClick={() => setMobileOpen(false)}>Sobre mí</a>
+        <a href="#proyectos" onClick={() => setMobileOpen(false)}>Proyectos</a>
+      </div>
 
       {openContact && (
         <div className="contact-modal">
           <div className="contact-box">
             <h2>{lang === "es" ? "Contacto" : "Contact"}</h2>
 
-            <input placeholder={lang === "es" ? "Nombre" : "Name"} />
-            <input placeholder={lang === "es" ? "Correo" : "Email"} />
-            <input placeholder={lang === "es" ? "Tema" : "Subject"} />
-            <textarea placeholder={lang === "es" ? "Mensaje" : "Message"} />
+            <input placeholder="Nombre" />
+            <input placeholder="Correo" />
+            <input placeholder="Tema" />
+            <textarea placeholder="Mensaje" />
 
             <button
               className={`send-btn ${sent ? "sent" : ""}`}
               onClick={handleSend}
             >
-              {sent
-                ? lang === "es"
-                  ? "✔ Enviado con éxito"
-                  : "✔ Sent!"
-                : lang === "es"
-                ? "Enviar"
-                : "Send"}
+              {sent ? "✔ Enviado" : "Enviar"}
             </button>
 
             <button
