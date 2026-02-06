@@ -41,10 +41,10 @@ function Contact({ lang }) {
       </form>
 
       <div className="contact-social">
-        <a href="https://www.instagram.com/juliosuarez3/" target="_blank" rel="noopener noreferrer"><Instagram /></a>
-        <a href="https://github.com/juliosm3" target="_blank" rel="noopener noreferrer"><Github /></a>
         <a href="https://www.linkedin.com/in/juliosuarezmartinez/" target="_blank" rel="noopener noreferrer"><Linkedin /></a>
+        <a href="https://github.com/juliosm3" target="_blank" rel="noopener noreferrer"><Github /></a>
         <a href="https://wa.me/685564897" target="_blank" rel="noopener noreferrer"><MessageCircle /></a>
+        <a href="https://www.instagram.com/juliosuarez3/" target="_blank" rel="noopener noreferrer"><Instagram /></a>
       </div>
     </motion.section>
   );

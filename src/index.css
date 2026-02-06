@@ -628,43 +628,20 @@ body.dark .about-card {
   cursor: pointer;
 }
 
-/* ========== SOLO MOVIL ========== */
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
-  .nav-center {
-    display: none !important;
+  section {
+    min-height: auto;
+    padding: 6rem 1.2rem 3rem;
   }
-
-  .burger-btn {
-    display: block;
-  }
-
-  /* Oculta botones extra si quieres */
-  .contact-btn {
-    display: none;
-  }
-}
-
-/* ========== DESKTOP ========== */
-@media (min-width: 769px) {
-
-  .burger-btn {
-    display: none !important;
-  }
-
-  .mobile-menu {
-    display: none !important;
-  }
-}
-
-/* ================== HERO MOBILE PREMIUM ================== */
-@media (max-width: 768px) {
 
   .hero {
     min-height: 100vh;
-    padding: 6.5rem 1rem 2rem;
-    gap: 1.2rem;
-    justify-content: center;
+    padding: 7rem 1rem 2rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
   }
 
   .hero-left img {
@@ -681,27 +658,17 @@ body.dark .about-card {
 
   .hero-right p {
     font-size: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
   }
 
   .hero a {
-    padding: 12px 26px;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.6rem;
   }
 
-  /* SOCIAL ICONS EN UNA SOLA FILA */
   .hero-social {
-    display: flex;
     flex-wrap: nowrap;
     justify-content: center;
-    gap: 14px;
-    width: 100%;
-    margin-top: 0.6rem;
-  }
-
-  .hero-social a {
-    width: 42px;
-    height: 42px;
+    margin-top: 0.4rem;
   }
 }
