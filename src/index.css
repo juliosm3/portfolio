@@ -656,3 +656,22 @@ body.dark .about-card {
     display: none !important;
   }
 }
+
+/* === FIX HERO MOBILE OVERFLOW === */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100vh;
+    padding-top: 7rem;
+  }
+
+  .hero-left img {
+    width: 180px !important;
+    height: 180px !important;
+    max-width: 70vw;
+    max-height: 70vw;
+  }
+
+  .hero-right {
+    max-width: 90%;
+  }
+}
