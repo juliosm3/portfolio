@@ -28,8 +28,11 @@ function Navbar({ dark, setDark, lang, setLang }) {
     <>
       <header className={`navbar-glass ${scrolled ? "scrolled" : ""}`}>
         <div className="nav-inner">
+
+          {/* IZQUIERDA */}
           <div className="nav-left">Julio</div>
 
+          {/* CENTRO (solo desktop) */}
           <nav className="nav-center">
             <a href="#inicio">Inicio</a>
             <a href="#tecnologias">Tecnologías</a>
@@ -37,6 +40,7 @@ function Navbar({ dark, setDark, lang, setLang }) {
             <a href="#proyectos">Proyectos</a>
           </nav>
 
+          {/* DERECHA */}
           <div className="nav-right">
             <button className="contact-btn" onClick={() => setOpenContact(true)}>
               {lang === "es" ? "Contactemos" : "Contact"}
@@ -50,7 +54,7 @@ function Navbar({ dark, setDark, lang, setLang }) {
               {dark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
-            {/* Burger solo móvil */}
+            {/* BURGER SOLO MÓVIL */}
             <button
               className="burger-btn"
               onClick={() => setMobileOpen(true)}
@@ -61,21 +65,36 @@ function Navbar({ dark, setDark, lang, setLang }) {
         </div>
       </header>
 
-      {/* MOBILE MENU */}
+      {/* ===== MOBILE MENU ===== */}
       <div className={`mobile-menu ${mobileOpen ? "show" : ""}`}>
+
+        {/* BOTÓN CERRAR */}
         <button
           className="close-mobile"
           onClick={() => setMobileOpen(false)}
         >
-          <X size={28} />
+          <X size={30} />
         </button>
 
+        {/* LINKS */}
         <a href="#inicio" onClick={() => setMobileOpen(false)}>Inicio</a>
         <a href="#tecnologias" onClick={() => setMobileOpen(false)}>Tecnologías</a>
         <a href="#sobre-mi" onClick={() => setMobileOpen(false)}>Sobre mí</a>
         <a href="#proyectos" onClick={() => setMobileOpen(false)}>Proyectos</a>
+
+        {/* BOTONES DENTRO DEL MENÚ */}
+        <div style={{ display: "flex", gap: "16px", marginTop: "30px" }}>
+          <button className="icon-btn" onClick={toggleLang}>
+            <Globe size={20} />
+          </button>
+
+          <button className="icon-btn" onClick={toggleTheme}>
+            {dark ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+        </div>
       </div>
 
+      {/* CONTACT MODAL */}
       {openContact && (
         <div className="contact-modal">
           <div className="contact-box">
