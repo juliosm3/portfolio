@@ -1076,3 +1076,108 @@ body.dark .app::before {
     height: 20px !important;
   }
 }
+
+/* ===================================================== */
+/* ====== SUPER FINAL OVERRIDE: NAVBAR MOBILE FIX ======= */
+/* ====== (NO DELETE - sobrescribe parches previos) ===== */
+/* ===================================================== */
+@media (max-width: 768px) {
+
+  /* --- Barra estable (altura/ancho) --- */
+  .navbar-glass { top: 12px !important; }
+
+  .nav-inner{
+    position: relative !important;
+    padding: 12px 16px !important;
+    min-height: 48px !important; /* evita que el burger sobresalga */
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* --- Nombre centrado siempre --- */
+  .nav-left{
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+    font-size: 1.2rem !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    max-width: 160px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  /* --- nav-center fuera en móvil --- */
+  .nav-center{ display: none !important; }
+
+  /* ===================================================
+     CLAVE: desactivamos layouts conflictivos previos
+     =================================================== */
+
+  /* nav-right: NO absoluto, grupo a la izquierda */
+  .nav-right{
+    display: flex !important;
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+
+    margin-right: auto !important;
+    gap: 8px !important;
+    z-index: 3 !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+
+  /* Contact sigue oculto en móvil */
+  .nav-right .contact-btn{ display: none !important; }
+
+  /* Iconos: NO absolute, quedan a la izquierda sin pisarse */
+  .nav-right .icon-btn{
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    top: auto !important;
+
+    display: inline-flex !important;
+    width: 34px !important;
+    height: 34px !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Burger: absoluto a la derecha dentro de nav-inner, redondo y sin sobresalir */
+  .burger-btn{
+    display: inline-flex !important;
+    position: absolute !important;
+    right: 14px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    border: none !important;
+    background: rgba(11, 46, 111, 0.12) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 4 !important;
+  }
+
+  .burger-btn svg{
+    width: 20px !important;
+    height: 20px !important;
+    display: block !important;
+  }
+
+  /* Reservas para que el texto centrado nunca choque */
+  .nav-inner{
+    padding-left: 96px !important;   /* 2 iconos */
+    padding-right: 64px !important;  /* burger */
+  }
+}
