@@ -65,32 +65,35 @@ function Navbar({ dark, setDark, lang, setLang }) {
         </div>
       </header>
 
-      {/* ===== MOBILE MENU ===== */}
+      {/* ===== MOBILE MENU PREMIUM ===== */}
       <div className={`mobile-menu ${mobileOpen ? "show" : ""}`}>
+        <div className="mobile-panel">
 
-        {/* BOTÓN CERRAR */}
-        <button
-          className="close-mobile"
-          onClick={() => setMobileOpen(false)}
-        >
-          <X size={30} />
-        </button>
-
-        {/* LINKS */}
-        <a href="#inicio" onClick={() => setMobileOpen(false)}>Inicio</a>
-        <a href="#tecnologias" onClick={() => setMobileOpen(false)}>Tecnologías</a>
-        <a href="#sobre-mi" onClick={() => setMobileOpen(false)}>Sobre mí</a>
-        <a href="#proyectos" onClick={() => setMobileOpen(false)}>Proyectos</a>
-
-        {/* BOTONES DENTRO DEL MENÚ */}
-        <div style={{ display: "flex", gap: "16px", marginTop: "30px" }}>
-          <button className="icon-btn" onClick={toggleLang}>
-            <Globe size={20} />
+          {/* BOTÓN CERRAR */}
+          <button
+            className="close-mobile"
+            onClick={() => setMobileOpen(false)}
+          >
+            <X size={26} />
           </button>
 
-          <button className="icon-btn" onClick={toggleTheme}>
-            {dark ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
+          {/* LINKS */}
+          <a href="#inicio" onClick={() => setMobileOpen(false)}>Inicio</a>
+          <a href="#tecnologias" onClick={() => setMobileOpen(false)}>Tecnologías</a>
+          <a href="#sobre-mi" onClick={() => setMobileOpen(false)}>Sobre mí</a>
+          <a href="#proyectos" onClick={() => setMobileOpen(false)}>Proyectos</a>
+
+          {/* BOTONES EXTRA */}
+          <div className="mobile-tools">
+            <button onClick={toggleLang}>
+              <Globe size={18} />
+            </button>
+
+            <button onClick={toggleTheme}>
+              {dark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          </div>
+
         </div>
       </div>
 

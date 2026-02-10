@@ -754,3 +754,168 @@ body.dark .about-card {
   }
 }
 
+/* ================= NAVBAR MOBILE ONLY ================= */
+@media (max-width: 768px) {
+
+  /* Oculta links desktop */
+  .nav-center,
+  .nav-right {
+    display: none !important;
+  }
+
+  /* Centra el nombre */
+  .nav-inner {
+    justify-content: center !important;
+    position: relative;
+  }
+
+  .nav-left {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+  }
+
+  /* Burger visible */
+  .burger-btn {
+    display: block !important;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+}
+
+/* ===== MOBILE MENU PREMIUM ===== */
+
+.mobile-menu {
+  background: linear-gradient(135deg, #020617, #0b2e6f);
+  backdrop-filter: blur(20px);
+}
+
+.mobile-menu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.12), transparent 60%);
+}
+
+.mobile-menu a {
+  font-size: 2.4rem;
+  letter-spacing: 2px;
+}
+
+/* botones extra dentro del menú */
+.mobile-tools {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.mobile-tools button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-size: 18px;
+}
+
+/* ===== MOBILE MENU PREMIUM ===== */
+
+.mobile-menu {
+  background: linear-gradient(135deg, #020617, #0b2e6f);
+  backdrop-filter: blur(20px);
+}
+
+.mobile-menu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.12), transparent 60%);
+}
+
+.mobile-menu a {
+  font-size: 2.4rem;
+  letter-spacing: 2px;
+}
+
+/* botones extra dentro del menú */
+.mobile-tools {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.mobile-tools button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-size: 18px;
+}
+
+/* ================= MOBILE NAVBAR PREMIUM PANEL ================= */
+@media (max-width: 768px) {
+
+  .nav-center,
+  .contact-btn,
+  .icon-btn {
+    display: none !important;
+  }
+
+  .nav-inner {
+    justify-content: center !important;
+    position: relative;
+  }
+
+  .nav-left {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.3rem;
+  }
+
+  .burger-btn {
+    display: block !important;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(11,46,111,0.15);
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* PANEL PREMIUM */
+.mobile-menu {
+  padding: 2.5rem;
+}
+
+.mobile-panel {
+  background: rgba(255,255,255,0.12);
+  border-radius: 22px;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+  backdrop-filter: blur(20px);
+}
+
+.mobile-tools {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+
+
+
