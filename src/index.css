@@ -973,3 +973,106 @@ body.dark .app::before {
     right: 14px !important;
   }
 }
+/* ===================================================== */
+/* ====== PATCH FINAL: NAVBAR MOBILE SIN PISARSE ======= */
+/* ===================================================== */
+@media (max-width: 768px) {
+
+  /* Ajuste general para que no “sobre” alto en móvil */
+  .hero {
+    min-height: 100svh !important; /* mejor que 100vh en móviles */
+    padding: 6.6rem 1rem 1.2rem !important;
+    justify-content: center !important;
+  }
+
+  .hero-left {
+    gap: 10px !important; /* reduce distancia foto <-> iconos */
+  }
+
+  .hero-right h1 {
+    margin: 0.2rem 0 !important;
+  }
+
+  .hero-right p {
+    margin-bottom: 0.4rem !important;
+  }
+
+  .hero-right a {
+    margin-bottom: 0.7rem !important;
+  }
+
+  .hero-social {
+    margin-top: 0.2rem !important;
+  }
+
+  /* ===== NAVBAR layout: izquierda (iconos) - centro (Julio) - derecha (burger) ===== */
+
+  .nav-inner {
+    position: relative !important;
+    justify-content: center !important;
+    padding: 12px 14px !important; /* un poco menos para que quepa todo */
+  }
+
+  /* Nombre centrado y sin interceptar clicks */
+  .nav-left {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 2 !important;
+    pointer-events: none;
+    font-size: 1.2rem !important;
+    white-space: nowrap;
+  }
+
+  /* Mantén nav-center oculto en móvil */
+  .nav-center {
+    display: none !important;
+  }
+
+  /* Nav-right vuelve a mostrarse (pero remaquetado) */
+  .nav-right {
+    display: flex !important;
+    position: absolute !important;
+    left: 12px !important;
+    right: 12px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    z-index: 3 !important;
+    gap: 8px !important;
+  }
+
+  /* Oculta solo el botón grande de contacto en móvil */
+  .nav-right .contact-btn {
+    display: none !important;
+  }
+
+  /* Iconos pequeños (idioma / tema) a la izquierda */
+  .nav-right .icon-btn {
+    display: inline-flex !important;
+    width: 34px !important;
+    height: 34px !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Burger a la derecha, redondo, pero sin sobresalir */
+  .nav-right .burger-btn {
+    display: inline-flex !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(11, 46, 111, 0.12) !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .nav-right .burger-btn svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
