@@ -937,3 +937,39 @@ body.dark .app::before {
   }
 }
 
+/* ===================================================== */
+/* ===== MOBILE NAVBAR OVERLAP FIX (NO DELETE) ========= */
+/* ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* 1) Reservamos espacio real para izquierda y derecha */
+  .nav-inner {
+    padding-left: 110px !important;  /* espacio para iconos */
+    padding-right: 70px !important;  /* espacio para burger */
+  }
+
+  /* 2) Ajustamos iconos de la izquierda */
+  .nav-right .icon-btn:nth-of-type(1) {
+    left: 14px !important;
+  }
+
+  .nav-right .icon-btn:nth-of-type(2) {
+    left: 52px !important;
+  }
+
+  /* 3) El nombre queda realmente centrado y protegido */
+  .nav-left {
+    max-width: 140px;              /* evita que invada */
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;          /* UX más limpia */
+  }
+
+  /* 4) Burger asegurado a la derecha sin invadir */
+  .burger-btn {
+    right: 14px !important;
+  }
+}
