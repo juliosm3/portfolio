@@ -1181,3 +1181,45 @@ body.dark .app::before {
     padding-right: 64px !important;  /* burger */
   }
 }
+
+/* ===================================================== */
+/* ====== PATCH SECCIONES MOBILE (NO DELETE) =========== */
+/* ===================================================== */
+@media (max-width: 768px) {
+
+  /* 1) En móvil, NO fuerces 100vh en TODAS las secciones (corta contenido) */
+  section {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 6.5rem 1rem 3rem 1rem !important; /* navbar + aire */
+    align-items: flex-start !important;        /* evita “centrado” que recorta arriba/abajo */
+  }
+
+  /* 2) El HERO sí queremos que sea 1 pantalla (solo inicio) */
+  #inicio.hero {
+    min-height: 100svh !important;
+    height: 100svh !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  /* 3) Las demás secciones (tech/about/projects/contact) que respiren */
+  #tecnologias,
+  #sobre-mi,
+  #proyectos,
+  #contacto {
+    overflow: visible !important;
+  }
+
+  /* 4) Ajustes suaves para que no “aplasten” el contenido */
+  .about-card {
+    padding: 26px !important;
+    gap: 18px !important;
+    grid-template-columns: 1fr !important; /* evita cortes por dos columnas */
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(2, minmax(130px, 1fr)) !important;
+    gap: 14px !important;
+  }
+}
