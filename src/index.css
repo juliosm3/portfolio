@@ -1,1628 +1,560 @@
-:root {
-  --main-blue: #0b2e6f;
-  --main-blue-hover: #0a255c;
-}
+:root{--main-blue:#0b2e6f;--main-blue-hover:#0a255c}
 
-/* ===================================================== */
 /* ======================= GLOBAL ======================= */
-/* ===================================================== */
-
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  font-family: 'Inter', 'Poppins', system-ui, sans-serif;
-  background: white;
-  color: #0f172a;
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'Inter','Poppins',system-ui,sans-serif;
+  background:#fff;
+  color:#0f172a
 }
+*{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;box-sizing:border-box}
+*::before,*::after{box-sizing:border-box}
 
-* {
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+body,section,.hero,.nav-inner{transition:background-color .4s ease,color .4s ease}
+h1,h2,h3,p,a,button{transition:color .25s ease,transform .25s ease,opacity .25s ease}
 
-body, section, .hero, .nav-inner {
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-h1, h2, h3, p, a, button {
-  transition: color 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
-}
-
-/* ===================================================== */
 /* ===================== ESTRUCTURA ===================== */
-/* ===================================================== */
-
-section {
-  min-height: 100vh;
-  padding: 9rem 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(2px);
+section{
+  min-height:100vh;
+  padding:9rem 4rem;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  backdrop-filter:blur(2px)
 }
 
-/* ===================================================== */
 /* ======================= HERO ========================= */
-/* ===================================================== */
+.hero{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:3rem;
+  padding:4rem 2rem;
+  background:#fff;
+  color:#1e293b;
+  position:relative
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center,rgba(11,46,111,.08),transparent 60%);
+  z-index:0
+}
+.hero>*{position:relative;z-index:1}
 
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  padding: 4rem 2rem;
-  background-color: #ffffff;
-  color: #1e293b;
-  position: relative;
+.hero-left img{
+  width:500px;height:500px;
+  object-fit:cover;
+  border-radius:50%;
+  border:4px solid var(--main-blue);
+  box-shadow:0 0 25px rgba(11,46,111,.35);
+  animation:float 6s ease-in-out infinite
+}
+.hero-right{display:flex;flex-direction:column;justify-content:center}
+.hero-right h1{
+  font-size:3rem;
+  font-weight:800;
+  color:var(--main-blue);
+  margin-bottom:1rem
+}
+.hero-right p{font-size:1.25rem;margin-bottom:2rem}
+
+.hero a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:2rem;
+  padding:14px 34px;
+  background:var(--main-blue);
+  color:#fff;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 6px 18px rgba(11,46,111,.35);
+  transition:all .25s ease
+}
+.hero a:hover{
+  background:var(--main-blue-hover);
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(11,46,111,.45)
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(11, 46, 111, 0.08),
-    transparent 60%
-  );
-  z-index: 0;
-}
-
-.hero > * {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-left img {
-  width: 500px;
-  height: 500px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid var(--main-blue);
-  box-shadow: 0 0 25px rgba(11, 46, 111, 0.35);
-  animation: float 6s ease-in-out infinite;
-}
-
-.hero-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.hero-right h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--main-blue);
-  margin-bottom: 1rem;
-}
-
-.hero-right p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-}
-
-/* BOTÓN CV */
-.hero a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 2rem;
-  padding: 14px 34px;
-  background: var(--main-blue);
-  color: white;
-  border-radius: 999px;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 6px 18px rgba(11, 46, 111, 0.35);
-  transition: all 0.25s ease;
-}
-
-.hero a:hover {
-  background: var(--main-blue-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(11, 46, 111, 0.45);
-}
-
-/* ===================================================== */
 /* ======================= NAVBAR ======================= */
-/* ===================================================== */
-
-.navbar-glass {
-  position: fixed;
-  top: 20px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  z-index: 9999;
+.navbar-glass{
+  position:fixed;
+  top:20px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  z-index:9999
 }
-
-.nav-inner {
-  width: 90%;
-  max-width: 1200px;
-  padding: 14px 30px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.nav-inner{
+  width:90%;
+  max-width:1200px;
+  padding:14px 30px;
+  border-radius:999px;
+  background:rgba(255,255,255,.8);
+  backdrop-filter:blur(12px);
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  display:flex;
+  align-items:center;
+  justify-content:space-between
 }
-
-.nav-left {
-  font-weight: 800;
-  font-size: 20px;
-  color: var(--main-blue);
+.nav-left{font-weight:800;font-size:20px;color:var(--main-blue)}
+.nav-center a{
+  margin:0 16px;
+  color:#777;
+  text-decoration:none;
+  font-weight:400;
+  position:relative;
+  transition:font-weight .25s ease,color .25s ease,transform .25s ease
 }
-
-.nav-center a {
-  margin: 0 16px;
-  color: #777;
-  text-decoration: none;
-  font-weight: 400;
-  position: relative;
-  transition: font-weight 0.25s ease, color 0.25s ease, transform 0.25s ease;
+.nav-center a:hover{font-weight:700;color:#000;transform:translateY(-1px)}
+.nav-right{display:flex;gap:10px}
+.contact-btn{background:none;border:none;color:#777;font-weight:500;cursor:pointer}
+.icon-btn{
+  width:36px;height:36px;
+  border-radius:50%;
+  border:none;
+  background:#f2f2f2;
+  cursor:pointer;
+  font-size:18px;
+  transition:transform .2s ease
 }
+.icon-btn:hover{transform:scale(1.1)}
 
-.nav-center a:hover {
-  font-weight: 700;
-  color: #000;
-  transform: translateY(-1px);
-}
-
-.nav-right {
-  display: flex;
-  gap: 10px;
-}
-
-.contact-btn {
-  background: none;
-  border: none;
-  color: #777;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.icon-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: none;
-  background: #f2f2f2;
-  cursor: pointer;
-  font-size: 18px;
-  transition: transform 0.2s ease;
-}
-
-.icon-btn:hover { transform: scale(1.1); }
-
-/* ===================================================== */
 /* ==================== CONTACT MODAL =================== */
-/* ===================================================== */
-
-.contact-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  display: grid;
-  place-items: center;
-  z-index: 99999;
+.contact-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  display:grid;
+  place-items:center;
+  z-index:99999
 }
-
-.contact-box {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.contact-box{
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  width:300px;
+  display:flex;
+  flex-direction:column;
+  gap:10px
 }
-
-.contact-box input,
-.contact-box textarea {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.contact-box input,.contact-box textarea{
+  padding:10px;
+  border-radius:6px;
+  border:1px solid #ccc
 }
-
-.send-btn {
-  background: var(--main-blue);
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 20px;
-  cursor: pointer;
+.send-btn{
+  background:var(--main-blue);
+  color:#fff;
+  border:none;
+  padding:10px;
+  border-radius:20px;
+  cursor:pointer
 }
+.send-btn.sent{background:#22c55e}
+.close-btn{border:none;background:none;cursor:pointer}
 
-.send-btn.sent { background: #22c55e; }
-
-.close-btn {
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-/* ===================================================== */
 /* ======================= CONTACT ====================== */
-/* ===================================================== */
-
-.contact {
-  flex-direction: column;
-  text-align: center;
-  gap: 20px;
+.contact{flex-direction:column;text-align:center;gap:20px}
+.contact h2{font-size:2.5rem;font-weight:800;color:var(--main-blue)}
+.contact p{max-width:520px;opacity:.85}
+.contact-form{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  width:100%;
+  max-width:380px
+}
+.contact-form label{
+  display:flex;
+  flex-direction:column;
+  font-size:.85rem;
+  text-align:left;
+  color:#555
+}
+.contact-form input,.contact-form textarea{
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-family:inherit;
+  transition:border .2s ease,box-shadow .2s ease
+}
+.contact-form input:focus,.contact-form textarea:focus{
+  outline:none;
+  border-color:var(--main-blue);
+  box-shadow:0 0 0 3px rgba(11,46,111,.15)
+}
+.contact-form button{
+  margin-top:10px;
+  padding:14px;
+  border-radius:999px;
+  border:none;
+  background:var(--main-blue);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .25s ease
+}
+.contact-form button:hover{
+  background:var(--main-blue-hover);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(11,46,111,.4)
 }
 
-.contact h2 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--main-blue);
-}
-
-.contact p {
-  max-width: 520px;
-  opacity: 0.85;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  width: 100%;
-  max-width: 380px;
-}
-
-.contact-form label {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.85rem;
-  text-align: left;
-  color: #555;
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  font-family: inherit;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--main-blue);
-  box-shadow: 0 0 0 3px rgba(11, 46, 111, 0.15);
-}
-
-.contact-form button {
-  margin-top: 10px;
-  padding: 14px;
-  border-radius: 999px;
-  border: none;
-  background: var(--main-blue);
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.contact-form button:hover {
-  background: var(--main-blue-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(11, 46, 111, 0.4);
-}
-
-/* ===================================================== */
 /* ======================= SOCIAL ======================= */
-/* ===================================================== */
-
-.hero-social,
-.contact-social {
-  display: flex;
-  gap: 14px;
-  margin-top: 10px;
+.hero-social,.contact-social{display:flex;gap:14px;margin-top:10px}
+.hero-social a,.contact-social a{
+  width:42px;height:42px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(11,46,111,.08);
+  color:var(--main-blue);
+  transition:all .25s ease
+}
+.hero-social a:hover,.contact-social a:hover{
+  background:var(--main-blue);
+  color:#fff;
+  transform:translateY(-3px) scale(1.08);
+  box-shadow:0 6px 16px rgba(11,46,111,.4)
 }
 
-.hero-social a,
-.contact-social a {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: rgba(11, 46, 111, 0.08);
-  color: var(--main-blue);
-  transition: all 0.25s ease;
+/* ✅ FIX DEFINITIVO ICONOS (Lucide) */
+.hero-social a svg,.contact-social a svg{
+  width:22px;height:22px;
+  display:block;
+  stroke:currentColor;
+  fill:none;
+  opacity:1;
+  visibility:visible
 }
 
-.hero-social a:hover,
-.contact-social a:hover {
-  background: var(--main-blue);
-  color: white;
-  transform: translateY(-3px) scale(1.08);
-  box-shadow: 0 6px 16px rgba(11, 46, 111, 0.4);
-}
-
-/* ===================================================== */
 /* ======================== ABOUT ======================= */
-/* ===================================================== */
-
-.about { flex-direction: column; }
-
-.about-card {
-  max-width: 1000px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 40px;
-  padding: 60px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+.about{flex-direction:column}
+.about-card{
+  max-width:1000px;
+  width:100%;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:40px;
+  padding:60px;
+  border-radius:24px;
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(10px);
+  box-shadow:0 25px 60px rgba(0,0,0,.08)
 }
-
-.about-left h2 {
-  font-size: 2.6rem;
-  font-weight: 800;
-  color: var(--main-blue);
-  margin-bottom: 20px;
+.about-left h2{
+  font-size:2.6rem;
+  font-weight:800;
+  color:var(--main-blue);
+  margin-bottom:20px
 }
-
-.about-left p {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  opacity: 0.85;
-  margin-bottom: 14px;
+.about-left p{font-size:1.05rem;line-height:1.7;opacity:.85;margin-bottom:14px}
+.about-right{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  align-items:center
 }
-
-.about-right {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  align-items: center;
+.stat{
+  background:rgba(11,46,111,.08);
+  border-radius:16px;
+  padding:24px;
+  text-align:center;
+  transition:all .25s ease
 }
+.stat span{font-size:2rem;font-weight:800;color:var(--main-blue)}
+.stat p{font-size:.8rem;opacity:.8;margin-top:6px}
+.stat:hover{transform:translateY(-6px);background:var(--main-blue);color:#fff}
+.stat:hover span{color:#fff}
 
-.stat {
-  background: rgba(11, 46, 111, 0.08);
-  border-radius: 16px;
-  padding: 24px;
-  text-align: center;
-  transition: all 0.25s ease;
-}
-
-.stat span {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--main-blue);
-}
-
-.stat p {
-  font-size: 0.8rem;
-  opacity: 0.8;
-  margin-top: 6px;
-}
-
-.stat:hover {
-  transform: translateY(-6px);
-  background: var(--main-blue);
-  color: white;
-}
-
-.stat:hover span { color: white; }
-
-/* ===================================================== */
 /* ======================= SKILLS ======================= */
-/* ===================================================== */
+.tech{flex-direction:column;text-align:center;gap:14px}
+.tech h2{font-size:2.4rem;font-weight:800;color:var(--main-blue)}
+.tech p{opacity:.8;margin-bottom:40px}
 
-.tech {
-  flex-direction: column;
-  text-align: center;
-  gap: 14px;
+.tech-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(140px,1fr));
+  gap:20px;
+  max-width:800px;
+  width:100%
 }
-
-.tech h2 {
-  font-size: 2.4rem;
-  font-weight: 800;
-  color: var(--main-blue);
+.tech-card{
+  background:rgba(11,46,111,.08);
+  border-radius:18px;
+  padding:26px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  font-weight:600;
+  transition:all .25s ease;
+  cursor:default;
+  perspective:800px
 }
-
-.tech p {
-  opacity: 0.8;
-  margin-bottom: 40px;
+.tech-card img{width:48px;height:48px;object-fit:contain;margin-bottom:6px;transition:transform .25s ease}
+.tech-card:hover{
+  transform:translateY(-6px) scale(1.04);
+  background:var(--main-blue);
+  color:#fff;
+  box-shadow:0 14px 30px rgba(11,46,111,.4)
 }
+.tech-card:hover img{transform:scale(1.12)}
 
-.tech-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(140px, 1fr));
-  gap: 20px;
-  max-width: 800px;
-  width: 100%;
-}
-
-.tech-card {
-  background: rgba(11, 46, 111, 0.08);
-  border-radius: 18px;
-  padding: 26px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  font-weight: 600;
-  transition: all 0.25s ease;
-  cursor: default;
-  perspective: 800px;
-}
-
-.tech-card svg {
-  width: 36px;
-  height: 36px;
-  color: var(--main-blue);
-}
-
-.tech-card:hover {
-  transform: translateY(-6px) scale(1.04);
-  background: var(--main-blue);
-  color: white;
-  box-shadow: 0 14px 30px rgba(11, 46, 111, 0.4);
-}
-
-.tech-card:hover svg { color: white; }
-
-.tech-card img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  margin-bottom: 6px;
-  transition: transform 0.25s ease;
-}
-
-.tech-card:hover img { transform: scale(1.12); }
-
-/* ===================================================== */
 /* ===================== DARK MODE ====================== */
-/* ===================================================== */
+body.dark{background:#111;color:#fff}
+.app.dark section{background-color:#111!important;color:#f9fafb!important}
+body.dark .about-card{background:rgba(20,20,20,.75)}
 
-body.dark {
-  background: #111;
-  color: white;
-}
-
-.app.dark section {
-  background-color: #111 !important;
-  color: #f9fafb !important;
-}
-
-body.dark .about-card {
-  background: rgba(20, 20, 20, 0.75);
-}
-
-/* ===================================================== */
 /* ============ GLOBAL DYNAMIC BACKGROUND ============== */
-/* ===================================================== */
-
-.app {
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
+.app{min-height:100vh;position:relative;overflow-x:hidden}
+.app::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(11,46,111,.08), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(11,46,111,.06), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(11,46,111,.05), transparent 50%);
+  z-index:-1;
+  animation:floatBG 20s ease-in-out infinite alternate
+}
+body.dark .app::before{
+  background:
+    radial-gradient(circle at 20% 20%, rgba(11,46,111,.18), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(11,46,111,.12), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(11,46,111,.1), transparent 50%)
 }
 
-.app::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at 20% 20%, rgba(11, 46, 111, 0.08), transparent 40%),
-              radial-gradient(circle at 80% 30%, rgba(11, 46, 111, 0.06), transparent 45%),
-              radial-gradient(circle at 50% 80%, rgba(11, 46, 111, 0.05), transparent 50%);
-  z-index: -1;
-  animation: floatBG 20s ease-in-out infinite alternate;
-}
-
-body.dark .app::before {
-  background: radial-gradient(circle at 20% 20%, rgba(11, 46, 111, 0.18), transparent 40%),
-              radial-gradient(circle at 80% 30%, rgba(11, 46, 111, 0.12), transparent 45%),
-              radial-gradient(circle at 50% 80%, rgba(11, 46, 111, 0.1), transparent 50%);
-}
-
-/* ===================================================== */
 /* ===================== ANIMACIONES ==================== */
-/* ===================================================== */
-
-.hero-left,
-.hero-right {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 1s ease forwards;
+.hero-left,.hero-right{
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUp 1s ease forwards
 }
+.hero-left{animation-delay:.2s}
+.hero-right{animation-delay:.5s}
 
-.hero-left { animation-delay: 0.2s; }
-.hero-right { animation-delay: 0.5s; }
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+@keyframes floatBG{0%{transform:translateY(0)}100%{transform:translateY(-60px)}}
 
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-@keyframes floatBG {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-60px); }
-}
-
-/* ===================================================== */
 /* ===================== MOBILE MENU ==================== */
-/* ===================================================== */
+.burger-btn{display:none;background:none;border:none;cursor:pointer}
 
-/* Burger base */
-.burger-btn {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
+.mobile-menu{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,#0b2e6f,#020617);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:28px;
+  transform:translateY(-120%);
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
+  z-index:999999;
+  padding:2.5rem
+}
+.mobile-menu.show{transform:translateY(0)}
+.mobile-menu::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top,rgba(255,255,255,.12),transparent 60%)
+}
+.mobile-menu a{
+  font-size:2.4rem;
+  font-weight:800;
+  color:#fff;
+  text-decoration:none;
+  letter-spacing:2px;
+  transition:transform .25s ease,opacity .25s ease;
+  position:relative;
+  z-index:1
+}
+.mobile-menu a:hover{transform:scale(1.08);opacity:.85}
+.close-mobile{
+  position:absolute;
+  top:24px;
+  right:24px;
+  background:none;
+  border:none;
+  color:#fff;
+  cursor:pointer;
+  z-index:2
+}
+.mobile-panel{
+  background:rgba(255,255,255,.12);
+  border-radius:22px;
+  padding:3rem 2rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
+  backdrop-filter:blur(20px);
+  position:relative;
+  z-index:2
+}
+.mobile-tools{display:flex;gap:14px;margin-top:10px}
+.mobile-tools button{
+  width:44px;height:44px;
+  border-radius:50%;
+  border:none;
+  background:rgba(255,255,255,.15);
+  color:#fff;
+  font-size:18px
 }
 
-/* Overlay base (hidden) */
-.mobile-menu {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(135deg, #0b2e6f, #020617);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 28px;
-  transform: translateY(-120%);
-  transition: transform 0.45s cubic-bezier(.4,0,.2,1);
-  z-index: 999999;
-}
-
-/* Activo */
-.mobile-menu.show { transform: translateY(0); }
-
-.mobile-menu::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top, rgba(255,255,255,0.12), transparent 60%);
-}
-
-.mobile-menu a {
-  font-size: 2.4rem;
-  font-weight: 800;
-  color: white;
-  text-decoration: none;
-  letter-spacing: 2px;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-  position: relative;
-  z-index: 1;
-}
-
-.mobile-menu a:hover {
-  transform: scale(1.08);
-  opacity: 0.85;
-}
-
-.close-mobile {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  z-index: 2;
-}
-
-/* Panel premium interno */
-.mobile-menu { padding: 2.5rem; }
-
-.mobile-panel {
-  background: rgba(255,255,255,0.12);
-  border-radius: 22px;
-  padding: 3rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 22px;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
-  backdrop-filter: blur(20px);
-  position: relative;
-  z-index: 2;
-}
-
-.mobile-tools {
-  display: flex;
-  gap: 14px;
-  margin-top: 10px;
-}
-
-.mobile-tools button {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255,255,255,0.15);
-  color: white;
-  font-size: 18px;
-}
-
-/* ===================================================== */
 /* ======================= MOBILE ======================= */
-/* ===================================================== */
+@media (max-width:768px){
 
-/* ---- HERO MOBILE ONE SCREEN PATCH (se mantiene) ---- */
-@media (max-width: 768px) {
-
-  .hero {
-    min-height: 100vh !important;
-    padding-top: 6.5rem !important;
-    padding-bottom: 1.5rem !important;
-    gap: 0.8rem !important;
+  /* Secciones: no cortar */
+  section{
+    min-height:auto!important;
+    height:auto!important;
+    padding:6.5rem 1rem 3rem!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important
   }
 
-  .hero-left img {
-    width: 190px !important;
-    height: 190px !important;
-    max-width: 65vw !important;
-    max-height: 65vw !important;
+  /* HERO: 1 pantalla */
+  .hero{
+    min-height:100svh!important;
+    height:100svh!important;
+    padding:6.2rem 1rem 1.2rem!important;
+    justify-content:center!important;
+    gap:.55rem!important;
+    overflow:hidden
   }
-
-  .hero-right h1 {
-    font-size: 1.7rem !important;
-    line-height: 1.2;
+  .hero-left img{
+    width:190px!important;height:190px!important;
+    max-width:62vw!important;max-height:62vw!important;
+    margin:0 auto .35rem!important
   }
-
-  .hero-right p {
-    font-size: 0.95rem !important;
-    margin-bottom: 0.5rem !important;
-  }
-
-  .hero a {
-    margin-top: 0.4rem !important;
-    margin-bottom: 0.4rem !important;
-    padding: 11px 24px !important;
-    font-size: 0.85rem !important;
-  }
-
-  .hero-social {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    justify-content: center !important;
-    gap: 12px !important;
-    margin-top: 0.3rem !important;
-  }
-
-  .hero-social a {
-    width: 40px !important;
-    height: 40px !important;
-  }
-}
-
-/* ---- HERO MOBILE PERFECT LAYOUT (este pisa al anterior) ---- */
-@media (max-width: 768px) {
-  .hero {
-    min-height: 100vh !important;
-    padding: 7rem 1rem 2rem 1rem !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: space-evenly !important;
-    text-align: center !important;
-    gap: 0.5rem !important;
-  }
-
-  .hero-left,
-  .hero-right {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .hero-left {
-    order: 1;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-left img {
-    width: 200px !important;
-    height: 200px !important;
-    max-width: 70vw;
-    max-height: 70vw;
-    margin: 0 auto 0.5rem auto;
-  }
-
-  .hero-right {
-    order: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-right h1 {
-    font-size: 1.8rem !important;
-    margin: 0.3rem 0;
-  }
-
-  .hero-right p {
-    font-size: 1.05rem !important;
-    margin-bottom: 0.8rem;
-  }
-
-  .hero-right a { margin-bottom: 1rem; }
-
-  .hero-social {
-    order: 3;
-    width: 100%;
-    display: flex !important;
-    justify-content: center !important;
-    gap: 1rem;
-    margin-top: 0.5rem;
-  }
-
-  .hero-social a {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-/* ---- NAVBAR MOBILE (solo móvil) ---- */
-@media (max-width: 768px) {
-
-  /* Oculta elementos desktop */
-  .nav-center,
-  .contact-btn,
-  .icon-btn {
-    display: none !important;
-  }
-
-  .nav-inner {
-    justify-content: center !important;
-    position: relative;
-  }
-
-  /* Nombre centrado */
-  .nav-left {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.3rem;
-  }
-
-  /* Burger visible y redondo */
-  .burger-btn {
-    display: block !important;
-    position: absolute;
-    right: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(11,46,111,0.15);
-    border-radius: 50%;
-    width: 42px;
-    height: 42px;
-  }
-}
-
-/* ===================================================== */
-/* =============== MOBILE FINAL PATCH (NO DELETE) ====== */
-/* ===================================================== */
-
-/* 1) Evitar que el HERO sea más largo que la pantalla móvil */
-@media (max-width: 768px) {
-  /* Usa el alto real del móvil (mejor que 100vh en iOS/Android) */
-  .hero {
-    min-height: 100svh !important;
-    height: 100svh !important;
-
-    /* Bajamos un poco padding para que quepa todo en 1 pantalla */
-    padding: 6.2rem 1rem 1.2rem 1rem !important;
-
-    /* Evita que “space-evenly” empuje cosas hacia abajo */
-    justify-content: center !important;
-    gap: 0.55rem !important;
-
-    /* Por si algún elemento se sale por 1-2px */
-    overflow: hidden;
-  }
-
-  /* Ajuste fino de tamaños para que no “rompa” en móviles pequeños */
-  .hero-left img {
-    width: 190px !important;
-    height: 190px !important;
-    max-width: 62vw !important;
-    max-height: 62vw !important;
-    margin: 0 auto 0.35rem auto !important;
-  }
-
-  .hero-right h1 {
-    margin: 0.25rem 0 !important;
-    line-height: 1.15 !important;
-  }
-
-  .hero-right p {
-    margin: 0 0 0.55rem 0 !important;
-  }
-
-  .hero a {
-    margin: 0.35rem 0 0.55rem 0 !important;
-  }
-
-  .hero-social {
-    margin-top: 0.35rem !important;
-    gap: 0.85rem !important;
-  }
-
-  .hero-social a {
-    width: 46px !important;
-    height: 46px !important;
-  }
-}
-
-/* 2) Navbar móvil: que el burger NO sobresalga y que los iconos (idioma/tema)
-      estén a la izquierda en la barra (no dentro del menú) */
-@media (max-width: 768px) {
-  /* Un pelín más “bajita” y compacta para que todo encaje */
-  .navbar-glass { top: 12px !important; }
-
-  .nav-inner {
-    padding: 12px 18px !important;  /* menos padding, más compacto */
-    position: relative !important;
-  }
-
-  /* IMPORTANTE: antes ocultabas icon-btn en móvil.
-     Aquí los mostramos SOLO en la navbar para móvil. */
-  .nav-right .icon-btn {
-    display: grid !important;
-    place-items: center;
-    width: 34px !important;
-    height: 34px !important;
-  }
-
-  /* Mantén el contact oculto en móvil */
-  .nav-right .contact-btn { display: none !important; }
-
-  /* Colocamos los 2 iconos a la izquierda (posición absoluta).
-     OJO: hay 2 botones .icon-btn en tu JSX (idioma y tema). */
-  .nav-right .icon-btn:nth-of-type(1) {
-    position: absolute !important;
-    left: 14px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    z-index: 20 !important;
-  }
-
-  .nav-right .icon-btn:nth-of-type(2) {
-    position: absolute !important;
-    left: 56px !important; /* separación del primero */
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    z-index: 20 !important;
-  }
-
-  /* Burger a la derecha, redondo pero SIN sobresalir */
-  .burger-btn {
-    width: 38px !important;
-    height: 38px !important;
-    border-radius: 50% !important;
-
-    position: absolute !important;
-    right: 14px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-
-    /* estética premium + que no “cante” */
-    background: rgba(11, 46, 111, 0.12) !important;
-  }
-
-  /* Para que el icono del burger quede perfectamente centrado */
-  .burger-btn svg {
-    display: block;
-    margin: 0 auto;
-  }
-
-  /* Ajuste del nombre centrado para que no choque con iconos laterales */
-  .nav-left {
-    font-size: 1.25rem !important;
-  }
-}
-
-/* ===================================================== */
-/* ===== MOBILE NAVBAR OVERLAP FIX (NO DELETE) ========= */
-/* ===================================================== */
-
-@media (max-width: 768px) {
-
-  /* 1) Reservamos espacio real para izquierda y derecha */
-  .nav-inner {
-    padding-left: 110px !important;  /* espacio para iconos */
-    padding-right: 70px !important;  /* espacio para burger */
-  }
-
-  /* 2) Ajustamos iconos de la izquierda */
-  .nav-right .icon-btn:nth-of-type(1) {
-    left: 14px !important;
-  }
-
-  .nav-right .icon-btn:nth-of-type(2) {
-    left: 52px !important;
-  }
-
-  /* 3) El nombre queda realmente centrado y protegido */
-  .nav-left {
-    max-width: 140px;              /* evita que invada */
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    pointer-events: none;          /* UX más limpia */
-  }
-
-  /* 4) Burger asegurado a la derecha sin invadir */
-  .burger-btn {
-    right: 14px !important;
-  }
-}
-/* ===================================================== */
-/* ====== PATCH FINAL: NAVBAR MOBILE SIN PISARSE ======= */
-/* ===================================================== */
-@media (max-width: 768px) {
-
-  /* Ajuste general para que no “sobre” alto en móvil */
-  .hero {
-    min-height: 100svh !important; /* mejor que 100vh en móviles */
-    padding: 6.6rem 1rem 1.2rem !important;
-    justify-content: center !important;
-  }
-
-  .hero-left {
-    gap: 10px !important; /* reduce distancia foto <-> iconos */
-  }
-
-  .hero-right h1 {
-    margin: 0.2rem 0 !important;
-  }
-
-  .hero-right p {
-    margin-bottom: 0.4rem !important;
-  }
-
-  .hero-right a {
-    margin-bottom: 0.7rem !important;
-  }
-
-  .hero-social {
-    margin-top: 0.2rem !important;
-  }
-
-  /* ===== NAVBAR layout: izquierda (iconos) - centro (Julio) - derecha (burger) ===== */
-
-  .nav-inner {
-    position: relative !important;
-    justify-content: center !important;
-    padding: 12px 14px !important; /* un poco menos para que quepa todo */
-  }
-
-  /* Nombre centrado y sin interceptar clicks */
-  .nav-left {
-    position: absolute !important;
-    left: 50% !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    z-index: 2 !important;
-    pointer-events: none;
-    font-size: 1.2rem !important;
-    white-space: nowrap;
-  }
-
-  /* Mantén nav-center oculto en móvil */
-  .nav-center {
-    display: none !important;
-  }
-
-  /* Nav-right vuelve a mostrarse (pero remaquetado) */
-  .nav-right {
-    display: flex !important;
-    position: absolute !important;
-    left: 12px !important;
-    right: 12px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    z-index: 3 !important;
-    gap: 8px !important;
-  }
-
-  /* Oculta solo el botón grande de contacto en móvil */
-  .nav-right .contact-btn {
-    display: none !important;
-  }
-
-  /* Iconos pequeños (idioma / tema) a la izquierda */
-  .nav-right .icon-btn {
-    display: inline-flex !important;
-    width: 34px !important;
-    height: 34px !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  /* Burger a la derecha, redondo, pero sin sobresalir */
-  .nav-right .burger-btn {
-    display: inline-flex !important;
-    width: 36px !important;
-    height: 36px !important;
-    border-radius: 50% !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background: rgba(11, 46, 111, 0.12) !important;
-    border: none !important;
-    padding: 0 !important;
-  }
-
-  .nav-right .burger-btn svg {
-    width: 20px !important;
-    height: 20px !important;
-  }
-}
-
-/* ===================================================== */
-/* ====== SUPER FINAL OVERRIDE: NAVBAR MOBILE FIX ======= */
-/* ====== (NO DELETE - sobrescribe parches previos) ===== */
-/* ===================================================== */
-@media (max-width: 768px) {
-
-  /* --- Barra estable (altura/ancho) --- */
-  .navbar-glass { top: 12px !important; }
+  .hero-right h1{margin:.25rem 0!important;line-height:1.15!important;font-size:1.8rem!important}
+  .hero-right p{margin:0 0 .55rem!important;font-size:1.05rem!important}
+  .hero a{margin:.35rem 0 .55rem!important;padding:11px 24px!important;font-size:.85rem!important}
+  .hero-social{margin-top:.35rem!important;gap:.85rem!important;justify-content:center!important}
+  .hero-social a{width:46px!important;height:46px!important}
+
+  /* NAVBAR móvil final */
+  .navbar-glass{top:12px!important}
+  .nav-center{display:none!important}
 
   .nav-inner{
-    position: relative !important;
-    padding: 12px 16px !important;
-    min-height: 48px !important; /* evita que el burger sobresalga */
-    align-items: center !important;
-    justify-content: center !important;
+    position:relative!important;
+    padding:12px 16px!important;
+    min-height:48px!important;
+    align-items:center!important;
+    justify-content:center!important;
+    padding-left:96px!important;  /* 2 iconos */
+    padding-right:64px!important; /* burger */
   }
 
-  /* --- Nombre centrado siempre --- */
   .nav-left{
-    position: absolute !important;
-    left: 50% !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    z-index: 2 !important;
-    pointer-events: none !important;
-    font-size: 1.2rem !important;
-    line-height: 1 !important;
-    white-space: nowrap !important;
-    max-width: 160px !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    position:absolute!important;
+    left:50%!important;
+    top:50%!important;
+    transform:translate(-50%,-50%)!important;
+    z-index:2!important;
+    pointer-events:none!important;
+    font-size:1.2rem!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+    max-width:160px!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important
   }
 
-  /* --- nav-center fuera en móvil --- */
-  .nav-center{ display: none !important; }
-
-  /* ===================================================
-     CLAVE: desactivamos layouts conflictivos previos
-     =================================================== */
-
-  /* nav-right: NO absoluto, grupo a la izquierda */
   .nav-right{
-    display: flex !important;
-    position: static !important;
-    transform: none !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-
-    margin-right: auto !important;
-    gap: 8px !important;
-    z-index: 3 !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
+    display:flex!important;
+    position:static!important;
+    margin-right:auto!important;
+    gap:8px!important;
+    z-index:3!important;
+    align-items:center!important;
+    justify-content:flex-start!important
   }
 
-  /* Contact sigue oculto en móvil */
-  .nav-right .contact-btn{ display: none !important; }
-
-  /* Iconos: NO absolute, quedan a la izquierda sin pisarse */
+  .nav-right .contact-btn{display:none!important}
   .nav-right .icon-btn{
-    position: static !important;
-    transform: none !important;
-    left: auto !important;
-    top: auto !important;
-
-    display: inline-flex !important;
-    width: 34px !important;
-    height: 34px !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display:inline-flex!important;
+    width:34px!important;height:34px!important;
+    align-items:center!important;
+    justify-content:center!important
   }
 
-  /* Burger: absoluto a la derecha dentro de nav-inner, redondo y sin sobresalir */
   .burger-btn{
-    display: inline-flex !important;
-    position: absolute !important;
-    right: 14px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-
-    width: 36px !important;
-    height: 36px !important;
-    border-radius: 50% !important;
-    padding: 0 !important;
-    border: none !important;
-    background: rgba(11, 46, 111, 0.12) !important;
-    align-items: center !important;
-    justify-content: center !important;
-    z-index: 4 !important;
+    display:inline-flex!important;
+    position:absolute!important;
+    right:14px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    width:36px!important;height:36px!important;
+    border-radius:50%!important;
+    padding:0!important;
+    border:none!important;
+    background:rgba(11,46,111,.12)!important;
+    align-items:center!important;
+    justify-content:center!important;
+    z-index:4!important
   }
+  .burger-btn svg{width:20px!important;height:20px!important;display:block!important}
 
-  .burger-btn svg{
-    width: 20px !important;
-    height: 20px !important;
-    display: block !important;
+  /* ABOUT mobile: no cortar por derecha */
+  .about,.projects,.contact,.tech{width:100%}
+  .about-card{
+    width:100%!important;
+    max-width:calc(100vw - 2rem)!important;
+    margin:0 auto!important;
+    padding:26px!important;
+    gap:18px!important;
+    grid-template-columns:1fr!important;
+    overflow:hidden!important
   }
-
-  /* Reservas para que el texto centrado nunca choque */
-  .nav-inner{
-    padding-left: 96px !important;   /* 2 iconos */
-    padding-right: 64px !important;  /* burger */
+  .about-right{
+    width:100%!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:12px!important
   }
-}
+  .stat{min-width:0!important;padding:16px!important}
+  .stat span{font-size:1.5rem!important}
+  .stat p{font-size:.75rem!important}
 
-/* ===================================================== */
-/* ====== PATCH SECCIONES MOBILE (NO DELETE) =========== */
-/* ===================================================== */
-@media (max-width: 768px) {
+  /* TECHNOLOGIES: carrusel solo móvil */
+  .tech-grid{
+    width:100%!important;
+    max-width:calc(100vw - 2rem)!important;
+    margin:0 auto!important;
 
-  /* 1) En móvil, NO fuerces 100vh en TODAS las secciones (corta contenido) */
-  section {
-    min-height: auto !important;
-    height: auto !important;
-    padding: 6.5rem 1rem 3rem 1rem !important; /* navbar + aire */
-    align-items: flex-start !important;        /* evita “centrado” que recorta arriba/abajo */
+    display:grid!important;
+    grid-auto-flow:column!important;
+    grid-auto-columns:70%!important;
+    grid-template-columns:none!important;
+
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+
+    gap:14px!important;
+    padding:6px 10px 14px!important;
+
+    scrollbar-width:none
   }
-
-  /* 2) El HERO sí queremos que sea 1 pantalla (solo inicio) */
-  #inicio.hero {
-    min-height: 100svh !important;
-    height: 100svh !important;
-    justify-content: center !important;
-    overflow: hidden !important;
-  }
-
-  /* 3) Las demás secciones (tech/about/projects/contact) que respiren */
-  #tecnologias,
-  #sobre-mi,
-  #proyectos,
-  #contacto {
-    overflow: visible !important;
-  }
-
-  /* 4) Ajustes suaves para que no “aplasten” el contenido */
-  .about-card {
-    padding: 26px !important;
-    gap: 18px !important;
-    grid-template-columns: 1fr !important; /* evita cortes por dos columnas */
-  }
-
-  .tech-grid {
-    grid-template-columns: repeat(2, minmax(130px, 1fr)) !important;
-    gap: 14px !important;
-  }
-}
-
-/* ===================================================== */
-/* ===== PATCH: CENTRADO + ABOUT NO SE CORTA + TECH SWIPE */
-/* ===================================================== */
-
-/* 0) Anti-overflow global (evita cortes por 1-2px) */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-
-  /* 1) Centramos TODAS las secciones (menos el hero, que ya va perfecto) */
-  section {
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-  }
-
-  /* 2) ABOUT: evita que se corte por la derecha */
-  .about,
-  .projects,
-  .contact,
-  .tech {
-    width: 100%;
-  }
-
-  .about-card {
-    width: 100% !important;
-    max-width: calc(100vw - 2rem) !important; /* clave para que NO se salga */
-    margin: 0 auto !important;
-    padding: 26px !important;
-    gap: 18px !important;
-    grid-template-columns: 1fr !important;
-    overflow: hidden !important; /* por si algo interno intenta desbordar */
-  }
-
-  /* Stats: en móvil mejor 3 “encajados” sin desbordar */
-  .about-right {
-    width: 100% !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 12px !important;
-  }
-
-  .stat {
-    min-width: 0 !important;
-    padding: 16px !important;
-  }
-
-  .stat span {
-    font-size: 1.5rem !important;
-  }
-
-  .stat p {
-    font-size: 0.75rem !important;
-  }
-
-  /* 3) PROJECTS centrado (tu caja tiene estilos inline, esto solo centra el bloque) */
-  .projects {
-    flex-direction: column !important;
-    gap: 18px !important;
-  }
-
-  .projects h2 {
-    text-align: center !important;
-  }
-
-  /* 4) CONTACT centrado (ya está bastante bien, solo garantizamos) */
-  .contact {
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .contact-form {
-    margin: 0 auto !important;
-  }
-
-  /* 5) TECHNOLOGIES: “carrusel” SOLO en móvil (swipe + snap) */
-  .tech {
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .tech-grid {
-    width: 100% !important;
-    max-width: calc(100vw - 2rem) !important;
-    margin: 0 auto !important;
-
-    /* cambia grid a carrusel horizontal */
-    display: grid !important;
-    grid-auto-flow: column !important;
-    grid-auto-columns: 70% !important;   /* “tarjeta grande” como carrusel */
-    grid-template-columns: none !important;
-
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    gap: 14px !important;
-    padding: 6px 10px 14px !important;
-
-    /* oculta scrollbar */
-    scrollbar-width: none;
-  }
-
-  .tech-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .tech-card {
-    scroll-snap-align: center;
-    min-width: 0 !important;
-  }
-
-  /* Indicadores visuales de flechas (NO clicables, pero ayudan visualmente) */
-  .tech-grid {
-    position: relative;
-  }
-
-  .tech-grid::before,
-  .tech-grid::after {
-    content: "";
-    position: sticky;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.06);
-    backdrop-filter: blur(10px);
-    z-index: 5;
-    flex: 0 0 auto;
-    pointer-events: none;
-  }
-
-  .tech-grid::before {
-    left: 0;
-    margin-left: -6px;
-    /* flecha */
-    clip-path: polygon(60% 20%, 35% 50%, 60% 80%, 55% 80%, 28% 50%, 55% 20%);
-  }
-
-  .tech-grid::after {
-    right: 0;
-    margin-right: -6px;
-    /* flecha */
-    clip-path: polygon(40% 20%, 65% 50%, 40% 80%, 45% 80%, 72% 50%, 45% 20%);
-  }
-}
-
-/* ===================================================== */
-/* ===== FIX: ICONOS HERO SOCIAL NO VISIBLES EN MÓVIL ==== */
-/* ===================================================== */
-
-.hero-social a,
-.contact-social a {
-  color: var(--main-blue) !important; /* asegura currentColor */
-}
-
-.hero-social a svg,
-.contact-social a svg {
-  width: 22px !important;
-  height: 22px !important;
-  display: block !important;
-
-  /* Lucide = stroke por defecto */
-  stroke: currentColor !important;
-  fill: none !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* En hover, tu botón se vuelve azul y el icono blanco */
-.hero-social a:hover,
-.contact-social a:hover {
-  color: #fff !important;
-}
-
-/* Extra: por si algún estilo global les mete font-size raro */
-.hero-social a,
-.contact-social a {
-  font-size: 0 !important; /* evita “saltos” por texto inline */
-}
-
-/* ===================================================== */
-/* ========== TECH MOBILE CAROUSEL (FLECHAS) ============ */
-/* ===================================================== */
-
-.tech-carousel {
-  width: 100%;
-  max-width: 900px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Flechas: ocultas en desktop */
-.tech-arrow {
-  display: none;
-  border: none;
-  cursor: pointer;
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  background: rgba(11, 46, 111, 0.08);
-  color: var(--main-blue);
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-.tech-arrow:active {
-  transform: scale(0.98);
-}
-
-/* Mobile: carrusel horizontal */
-@media (max-width: 768px) {
-  .tech {
-    text-align: center;
-  }
-
-  .tech-grid.tech-scroll {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 14px !important;
-    padding: 12px 54px; /* deja hueco a las flechas */
-    max-width: 100%;
-  }
-
-  /* Ocultar scrollbar */
-  .tech-grid.tech-scroll::-webkit-scrollbar {
-    display: none;
-  }
-  .tech-grid.tech-scroll {
-    scrollbar-width: none;
-  }
-
-  .tech-card {
-    flex: 0 0 72vw;      /* tarjeta grande en móvil */
-    max-width: 260px;   /* límite por si el móvil es grande */
-    scroll-snap-align: center;
-  }
-
-  .tech-arrow {
-    display: inline-flex;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 5;
-  }
-
-  .tech-arrow-left {
-    left: 8px;
-  }
-
-  .tech-arrow-right {
-    right: 8px;
-  }
-}
-
-/* ===================================================== */
-/* ===== FIX: EVITAR FLECHAS DOBLES EN TECH CAROUSEL ===== */
-/* ===================================================== */
-@media (max-width: 768px) {
-  .tech-grid.tech-scroll::before,
-  .tech-grid.tech-scroll::after {
-    content: none !important;
-    display: none !important;
-  }
-}
-
-/* ===================================================== */
-/* ===== FIX: ICONOS HERO SOCIAL INVISIBLES EN MÓVIL ===== */
-/* ===================================================== */
-
-/* NO anules el tamaño del contenido dentro del <a> */
-.hero-social a,
-.contact-social a {
-  font-size: 16px !important; /* revierte el font-size:0 */
-  line-height: 1 !important;
-}
-
-/* Fuerza a lucide a pintarse siempre */
-.hero-social a svg,
-.contact-social a svg {
-  width: 22px !important;
-  height: 22px !important;
-  display: block !important;
-  stroke: currentColor !important;
-  fill: none !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* Asegura que el enlace tenga color visible */
-.hero-social a,
-.contact-social a {
-  color: var(--main-blue) !important;
-}
-
-.hero-social a:hover,
-.contact-social a:hover {
-  color: #fff !important;
-}
-
-/* ===================================================== */
-/* ===== PATCH FINAL: ICONOS HERO + FLECHAS DOBLES ===== */
-/* ===== (pegar AL FINAL del index.css) ================ */
-/* ===================================================== */
-
-/* 1) FIX DEFINITIVO: SVG (Lucide) visibles en hero/contact */
-.hero-social a,
-.contact-social a{
-  /* No pongas font-size: 0 aquí, puede romper algunos SVG en móvil */
-  font-size: inherit !important;
-  line-height: 0 !important;
-}
-
-.hero-social a svg,
-.contact-social a svg{
-  display: block !important;
-  width: 22px !important;
-  height: 22px !important;
-
-  /* fuerza Lucide a pintar SIEMPRE */
-  color: inherit !important;
-  stroke: currentColor !important;
-  stroke-width: 2 !important;
-  fill: none !important;
-
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* Si el botón se pone azul al hover, el icono blanco */
-.hero-social a:hover,
-.contact-social a:hover{
-  color: #fff !important;
-}
-
-
-/* 2) FIX: flechas dobles en Technologies
-   Si estás usando .tech-arrow (flechas reales),
-   desactivamos las flechas “fake” del ::before/::after */
-@media (max-width: 768px){
-  .tech-grid::before,
-  .tech-grid::after{
-    content: none !important;
-  }
-}
-
-/* ===================================================== */
-/* ===== FIX FINAL: ICONOS HERO SOCIAL + FLECHAS DOBLES == */
-/* ===== (NO DELETE - override al final del archivo) ==== */
-/* ===================================================== */
-
-/* 1) FIX ICONOS HERO SOCIAL (Lucide) EN MÓVIL Y DESKTOP */
-.hero-social a,
-.contact-social a {
-  /* quita el "font-size: 0" que puede romper svg en móviles */
-  font-size: 16px !important;
-
-  /* asegura color visible */
-  color: var(--main-blue) !important;
-}
-
-.hero-social a svg,
-.contact-social a svg {
-  width: 22px !important;
-  height: 22px !important;
-
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-
-  /* Lucide: que siempre pinte */
-  stroke: currentColor !important;
-  fill: none !important;
-}
-
-/* en hover el botón es azul -> icono blanco */
-.hero-social a:hover,
-.contact-social a:hover {
-  color: #fff !important;
-}
-
-/* 2) FIX FLECHAS DOBLES EN TECHNOLOGIES:
-      desactiva las pseudo-flechas (::before/::after) y deja solo .tech-arrow */
-@media (max-width: 768px) {
-  .tech-grid::before,
-  .tech-grid::after {
-    content: none !important;
-    display: none !important;
-  }
+  .tech-grid::-webkit-scrollbar{display:none}
+  .tech-card{scroll-snap-align:center;min-width:0!important}
+
+  /* 🔥 evita flechas dobles (dejamos solo tus .tech-arrow si las usas en JSX) */
+  .tech-grid::before,.tech-grid::after{content:none!important;display:none!important}
 }
