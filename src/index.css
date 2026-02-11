@@ -1223,3 +1223,155 @@ body.dark .app::before {
     gap: 14px !important;
   }
 }
+
+/* ===================================================== */
+/* ===== PATCH: CENTRADO + ABOUT NO SE CORTA + TECH SWIPE */
+/* ===================================================== */
+
+/* 0) Anti-overflow global (evita cortes por 1-2px) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+
+  /* 1) Centramos TODAS las secciones (menos el hero, que ya va perfecto) */
+  section {
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* 2) ABOUT: evita que se corte por la derecha */
+  .about,
+  .projects,
+  .contact,
+  .tech {
+    width: 100%;
+  }
+
+  .about-card {
+    width: 100% !important;
+    max-width: calc(100vw - 2rem) !important; /* clave para que NO se salga */
+    margin: 0 auto !important;
+    padding: 26px !important;
+    gap: 18px !important;
+    grid-template-columns: 1fr !important;
+    overflow: hidden !important; /* por si algo interno intenta desbordar */
+  }
+
+  /* Stats: en móvil mejor 3 “encajados” sin desbordar */
+  .about-right {
+    width: 100% !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .stat {
+    min-width: 0 !important;
+    padding: 16px !important;
+  }
+
+  .stat span {
+    font-size: 1.5rem !important;
+  }
+
+  .stat p {
+    font-size: 0.75rem !important;
+  }
+
+  /* 3) PROJECTS centrado (tu caja tiene estilos inline, esto solo centra el bloque) */
+  .projects {
+    flex-direction: column !important;
+    gap: 18px !important;
+  }
+
+  .projects h2 {
+    text-align: center !important;
+  }
+
+  /* 4) CONTACT centrado (ya está bastante bien, solo garantizamos) */
+  .contact {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .contact-form {
+    margin: 0 auto !important;
+  }
+
+  /* 5) TECHNOLOGIES: “carrusel” SOLO en móvil (swipe + snap) */
+  .tech {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .tech-grid {
+    width: 100% !important;
+    max-width: calc(100vw - 2rem) !important;
+    margin: 0 auto !important;
+
+    /* cambia grid a carrusel horizontal */
+    display: grid !important;
+    grid-auto-flow: column !important;
+    grid-auto-columns: 70% !important;   /* “tarjeta grande” como carrusel */
+    grid-template-columns: none !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 14px !important;
+    padding: 6px 10px 14px !important;
+
+    /* oculta scrollbar */
+    scrollbar-width: none;
+  }
+
+  .tech-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tech-card {
+    scroll-snap-align: center;
+    min-width: 0 !important;
+  }
+
+  /* Indicadores visuales de flechas (NO clicables, pero ayudan visualmente) */
+  .tech-grid {
+    position: relative;
+  }
+
+  .tech-grid::before,
+  .tech-grid::after {
+    content: "";
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.06);
+    backdrop-filter: blur(10px);
+    z-index: 5;
+    flex: 0 0 auto;
+    pointer-events: none;
+  }
+
+  .tech-grid::before {
+    left: 0;
+    margin-left: -6px;
+    /* flecha */
+    clip-path: polygon(60% 20%, 35% 50%, 60% 80%, 55% 80%, 28% 50%, 55% 20%);
+  }
+
+  .tech-grid::after {
+    right: 0;
+    margin-right: -6px;
+    /* flecha */
+    clip-path: polygon(40% 20%, 65% 50%, 40% 80%, 45% 80%, 72% 50%, 45% 20%);
+  }
+}
