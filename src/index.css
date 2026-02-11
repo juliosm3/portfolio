@@ -414,7 +414,9 @@ body.dark .app::before{
   font-size:18px
 }
 
-/* ======================= MOBILE ======================= */
+
+/*====================================MOBILE=====================================*/
+
 @media (max-width:768px){
 
   /* Secciones: no cortar */
@@ -427,27 +429,73 @@ body.dark .app::before{
     text-align:center!important
   }
 
-  /* HERO: 1 pantalla */
+  /* =========================================
+     HERO: centrado + 1 pantalla (todo cabe)
+  ========================================= */
   .hero{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+
     min-height:100svh!important;
     height:100svh!important;
     padding:6.2rem 1rem 1.2rem!important;
-    justify-content:center!important;
-    gap:.55rem!important;
-    overflow:hidden
+    gap:.6rem!important;
+    overflow:hidden!important
   }
+
+  .hero-left{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important
+  }
+
+  .hero-right{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important
+  }
+
   .hero-left img{
     width:190px!important;height:190px!important;
     max-width:62vw!important;max-height:62vw!important;
     margin:0 auto .35rem!important
   }
-  .hero-right h1{margin:.25rem 0!important;line-height:1.15!important;font-size:1.8rem!important}
-  .hero-right p{margin:0 0 .55rem!important;font-size:1.05rem!important}
-  .hero a{margin:.35rem 0 .55rem!important;padding:11px 24px!important;font-size:.85rem!important}
-  .hero-social{margin-top:.35rem!important;gap:.85rem!important;justify-content:center!important}
+
+  .hero-right h1{
+    margin:.25rem 0!important;
+    line-height:1.15!important;
+    font-size:1.8rem!important
+  }
+
+  .hero-right p{
+    margin:0 0 .55rem!important;
+    font-size:1.05rem!important
+  }
+
+  .hero a{
+    margin:.35rem 0 .55rem!important;
+    padding:11px 24px!important;
+    font-size:.85rem!important
+  }
+
+  .hero-social{
+    display:flex!important;
+    justify-content:center!important;
+    margin-top:.35rem!important;
+    gap:.85rem!important
+  }
+
   .hero-social a{width:46px!important;height:46px!important}
 
-  /* NAVBAR móvil final */
+  /* =========================================
+     NAVBAR móvil: iconos izquierda / Julio centro / burger derecha
+     (NO tocar Julio ni burger)
+  ========================================= */
   .navbar-glass{top:12px!important}
   .nav-center{display:none!important}
 
@@ -457,8 +505,10 @@ body.dark .app::before{
     min-height:48px!important;
     align-items:center!important;
     justify-content:center!important;
-    padding-left:96px!important;  /* 2 iconos */
-    padding-right:64px!important; /* burger */
+
+    /* Más reserva para que los iconos NO pisen el nombre */
+    padding-left:118px!important;  /* 2 iconos */
+    padding-right:64px!important   /* burger */
   }
 
   .nav-left{
@@ -476,10 +526,14 @@ body.dark .app::before{
     text-overflow:ellipsis!important
   }
 
+  /* Grupo iconos pegado a la izquierda (sin mover burger) */
   .nav-right{
     display:flex!important;
-    position:static!important;
-    margin-right:auto!important;
+    position:absolute!important;
+    left:14px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    margin:0!important;
     gap:8px!important;
     z-index:3!important;
     align-items:center!important;
@@ -487,6 +541,7 @@ body.dark .app::before{
   }
 
   .nav-right .contact-btn{display:none!important}
+
   .nav-right .icon-btn{
     display:inline-flex!important;
     width:34px!important;height:34px!important;
@@ -494,6 +549,7 @@ body.dark .app::before{
     justify-content:center!important
   }
 
+  /* Burger EXACTO a la derecha */
   .burger-btn{
     display:inline-flex!important;
     position:absolute!important;
@@ -509,10 +565,14 @@ body.dark .app::before{
     justify-content:center!important;
     z-index:4!important
   }
+
   .burger-btn svg{width:20px!important;height:20px!important;display:block!important}
 
-  /* ABOUT mobile: no cortar por derecha */
+  /* =========================================
+     ABOUT mobile: no cortar por derecha
+  ========================================= */
   .about,.projects,.contact,.tech{width:100%}
+
   .about-card{
     width:100%!important;
     max-width:calc(100vw - 2rem)!important;
@@ -522,41 +582,93 @@ body.dark .app::before{
     grid-template-columns:1fr!important;
     overflow:hidden!important
   }
+
   .about-right{
     width:100%!important;
     grid-template-columns:repeat(3,minmax(0,1fr))!important;
     gap:12px!important
   }
+
   .stat{min-width:0!important;padding:16px!important}
   .stat span{font-size:1.5rem!important}
   .stat p{font-size:.75rem!important}
 
-  /* TECHNOLOGIES: carrusel solo móvil */
-  .tech-grid{
+  /* =========================================
+     TECHNOLOGIES: carrusel + flechas pro/premium a los lados (solo móvil)
+  ========================================= */
+
+  .tech-carousel{
+    width:100%!important;
+    max-width:calc(100vw - 2rem)!important;
+    margin:0 auto!important;
+    position:relative!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important
+  }
+
+  /* Track scroll */
+  .tech-grid.tech-scroll{
     width:100%!important;
     max-width:calc(100vw - 2rem)!important;
     margin:0 auto!important;
 
-    display:grid!important;
-    grid-auto-flow:column!important;
-    grid-auto-columns:70%!important;
-    grid-template-columns:none!important;
+    display:flex!important;
+    flex-wrap:nowrap!important;
 
     overflow-x:auto!important;
     overflow-y:hidden!important;
-    -webkit-overflow-scrolling:touch;
-    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch!important;
+    scroll-snap-type:x mandatory!important;
 
     gap:14px!important;
-    padding:6px 10px 14px!important;
 
-    scrollbar-width:none
+    /* hueco para las flechas laterales */
+    padding:12px 56px!important;
+
+    scrollbar-width:none!important
   }
-  .tech-grid::-webkit-scrollbar{display:none}
-  .tech-card{scroll-snap-align:center;min-width:0!important}
 
-  /* 🔥 evita flechas dobles (dejamos solo tus .tech-arrow si las usas en JSX) */
+  .tech-grid.tech-scroll::-webkit-scrollbar{display:none!important}
+
+  .tech-card{
+    flex:0 0 72vw!important;
+    max-width:260px!important;
+    scroll-snap-align:center!important;
+    min-width:0!important
+  }
+
+  /* Flechas a los lados, premium */
+  .tech-arrow{
+    display:inline-flex!important;
+    position:absolute!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+
+    width:42px!important;
+    height:42px!important;
+    border-radius:999px!important;
+    border:none!important;
+    padding:0!important;
+    cursor:pointer!important;
+
+    background:rgba(255,255,255,.72)!important;
+    backdrop-filter:blur(12px)!important;
+    box-shadow:0 14px 35px rgba(0,0,0,.14)!important;
+
+    color:var(--main-blue)!important;
+    align-items:center!important;
+    justify-content:center!important;
+    z-index:20!important
+  }
+
+  .tech-arrow:active{
+    transform:translateY(-50%) scale(.97)!important
+  }
+
+  .tech-arrow-left{left:8px!important}
+  .tech-arrow-right{right:8px!important}
+
+  /* Evitar flechas dobles (pseudo) */
   .tech-grid::before,.tech-grid::after{content:none!important;display:none!important}
 }
-
-
