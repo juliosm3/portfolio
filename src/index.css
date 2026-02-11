@@ -1490,3 +1490,48 @@ body.dark .app::before {
     right: 8px;
   }
 }
+
+/* ===================================================== */
+/* ===== FIX: EVITAR FLECHAS DOBLES EN TECH CAROUSEL ===== */
+/* ===================================================== */
+@media (max-width: 768px) {
+  .tech-grid.tech-scroll::before,
+  .tech-grid.tech-scroll::after {
+    content: none !important;
+    display: none !important;
+  }
+}
+
+/* ===================================================== */
+/* ===== FIX: ICONOS HERO SOCIAL INVISIBLES EN MÓVIL ===== */
+/* ===================================================== */
+
+/* NO anules el tamaño del contenido dentro del <a> */
+.hero-social a,
+.contact-social a {
+  font-size: 16px !important; /* revierte el font-size:0 */
+  line-height: 1 !important;
+}
+
+/* Fuerza a lucide a pintarse siempre */
+.hero-social a svg,
+.contact-social a svg {
+  width: 22px !important;
+  height: 22px !important;
+  display: block !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Asegura que el enlace tenga color visible */
+.hero-social a,
+.contact-social a {
+  color: var(--main-blue) !important;
+}
+
+.hero-social a:hover,
+.contact-social a:hover {
+  color: #fff !important;
+}
