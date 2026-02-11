@@ -7,8 +7,8 @@ function Navbar({ dark, setDark, lang, setLang }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const toggleTheme = () => setDark(p => !p);
-  const toggleLang = () => setLang(p => (p === "es" ? "en" : "es"));
+  const toggleTheme = () => setDark((p) => !p);
+  const toggleLang = () => setLang((p) => (p === "es" ? "en" : "es"));
 
   const handleSend = () => {
     setSent(true);
@@ -28,7 +28,6 @@ function Navbar({ dark, setDark, lang, setLang }) {
     <>
       <header className={`navbar-glass ${scrolled ? "scrolled" : ""}`}>
         <div className="nav-inner">
-
           {/* IZQUIERDA */}
           <div className="nav-left">Julio</div>
 
@@ -40,39 +39,40 @@ function Navbar({ dark, setDark, lang, setLang }) {
             <a href="#proyectos">Proyectos</a>
           </nav>
 
-          {/* DERECHA */}
+          {/* DERECHA (idioma + tema + contact) */}
           <div className="nav-right">
             <button className="contact-btn" onClick={() => setOpenContact(true)}>
               {lang === "es" ? "Contactemos" : "Contact"}
             </button>
 
-            <button className="icon-btn" onClick={toggleLang}>
+            <button className="icon-btn" onClick={toggleLang} aria-label="Cambiar idioma">
               <Globe size={18} />
             </button>
 
-            <button className="icon-btn" onClick={toggleTheme}>
+            <button className="icon-btn" onClick={toggleTheme} aria-label="Cambiar tema">
               {dark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
-
-            {/* BURGER SOLO MÓVIL */}
-            <button
-              className="burger-btn"
-              onClick={() => setMobileOpen(true)}
-            >
-              <Menu size={22} />
-            </button>
           </div>
+
+          {/* BURGER SOLO MÓVIL (FUERA de nav-right para poder anclarlo a la derecha) */}
+          <button
+            className="burger-btn"
+            onClick={() => setMobileOpen(true)}
+            aria-label="Abrir menú"
+          >
+            <Menu size={22} />
+          </button>
         </div>
       </header>
 
       {/* ===== MOBILE MENU PREMIUM ===== */}
       <div className={`mobile-menu ${mobileOpen ? "show" : ""}`}>
         <div className="mobile-panel">
-
           {/* BOTÓN CERRAR */}
           <button
             className="close-mobile"
             onClick={() => setMobileOpen(false)}
+            aria-label="Cerrar menú"
           >
             <X size={26} />
           </button>
@@ -85,15 +85,14 @@ function Navbar({ dark, setDark, lang, setLang }) {
 
           {/* BOTONES EXTRA */}
           <div className="mobile-tools">
-            <button onClick={toggleLang}>
+            <button onClick={toggleLang} aria-label="Cambiar idioma">
               <Globe size={18} />
             </button>
 
-            <button onClick={toggleTheme}>
+            <button onClick={toggleTheme} aria-label="Cambiar tema">
               {dark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
           </div>
-
         </div>
       </div>
 
@@ -118,6 +117,7 @@ function Navbar({ dark, setDark, lang, setLang }) {
             <button
               className="close-btn"
               onClick={() => setOpenContact(false)}
+              aria-label="Cerrar"
             >
               ✖
             </button>
