@@ -52,7 +52,12 @@ function Technologies({ lang }) {
           <ChevronLeft size={22} />
         </button>
 
-        <div className="tech-grid tech-scroll" ref={trackRef}>
+        <div
+          className="tech-grid tech-scroll"
+          ref={trackRef}
+          /* opcional: mejora el swipe iOS (no cambia visual) */
+          // style={{ WebkitOverflowScrolling: "touch" }}
+        >
           <div className="tech-card">
             <img src={html} alt="HTML" />
             <span>HTML</span>

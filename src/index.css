@@ -558,3 +558,137 @@ body.dark .app::before{
   /* 🔥 evita flechas dobles (dejamos solo tus .tech-arrow si las usas en JSX) */
   .tech-grid::before,.tech-grid::after{content:none!important;display:none!important}
 }
+
+/* ===================================================== */
+/* ===== PATCH FINAL: HERO DESKTOP + TECH ARROWS + NAV === */
+/* ===== (PEGAR AL FINAL - NO BORRAR NADA) ============== */
+/* ===================================================== */
+
+/* ---------- 1) TECHNOLOGIES: flechas SOLO en móvil ---------- */
+.tech-carousel{position:relative}
+
+/* Desktop: oculta flechas siempre */
+@media (min-width: 769px){
+  .tech-arrow{display:none !important}
+}
+
+/* Mobile: flechas pro a izquierda/derecha (no arriba/abajo) */
+@media (max-width: 768px){
+
+  .tech-carousel{
+    width:100%;
+    max-width:900px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .tech-arrow{
+    display:inline-flex !important;
+    position:absolute !important;
+    top:50% !important;
+    transform:translateY(-50%) !important;
+
+    width:42px !important;
+    height:42px !important;
+    border-radius:999px !important;
+
+    border:none !important;
+    padding:0 !important;
+    cursor:pointer !important;
+
+    background:rgba(255,255,255,.72) !important;
+    backdrop-filter:blur(12px) !important;
+    box-shadow:0 10px 25px rgba(0,0,0,.10) !important;
+    color:var(--main-blue) !important;
+
+    align-items:center !important;
+    justify-content:center !important;
+
+    z-index:10 !important;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  .tech-arrow:active{transform:translateY(-50%) scale(.98) !important}
+
+  .tech-arrow-left{left:10px !important}
+  .tech-arrow-right{right:10px !important}
+
+  /* deja “hueco” dentro del carrusel para que no tapen tarjetas */
+  .tech-grid.tech-scroll{
+    padding-left:56px !important;
+    padding-right:56px !important;
+  }
+}
+
+/* ---------- 2) HERO DESKTOP: todo centrado y en 1 pantalla ---------- */
+@media (min-width: 769px){
+
+  /* hero centrado (foto + iconos + texto + botón) */
+  .hero{
+    min-height:100vh;
+    padding:7.5rem 2rem 3rem;   /* deja aire para la navbar */
+    flex-direction:column;
+    text-align:center;
+    gap:1.2rem;
+  }
+
+  .hero-left{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* la foto un pelín más contenida para que “quepa” seguro */
+  .hero-left img{
+    width:420px;
+    height:420px;
+    max-width:44vw;
+    max-height:44vw;
+  }
+
+  .hero-right{
+    align-items:center;
+    justify-content:center;
+  }
+
+  .hero-right h1{margin:0.25rem 0}
+  .hero-right p{margin:0.25rem 0 1rem}
+
+  .hero a{margin-top:0.6rem}
+
+  .hero-social{
+    justify-content:center;
+    margin-top:0.9rem;
+  }
+}
+
+/* ---------- 3) NAVBAR MÓVIL: iconos MÁS a la izquierda (no tapan Julio) ---------- */
+@media (max-width: 768px){
+
+  /* “reserva” extra a la izquierda (por si el nombre es largo) */
+  .nav-inner{
+    padding-left:112px !important; /* antes 96px */
+    padding-right:64px !important;
+  }
+
+  /* forzamos el grupo de iconos a posición fija a la izquierda */
+  .nav-right{
+    position:absolute !important;
+    left:14px !important;
+    top:50% !important;
+    transform:translateY(-50%) !important;
+
+    margin-right:0 !important;
+    width:auto !important;
+    z-index:3 !important;
+  }
+
+  /* burger sigue a la derecha */
+  .burger-btn{
+    right:14px !important;
+  }
+}
+
