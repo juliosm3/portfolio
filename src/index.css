@@ -497,13 +497,10 @@ body.dark .app::before{
     min-height:48px!important;
     align-items:center!important;
     justify-content:center!important;
-
-    /* CLAVE: reserva “hueco” a izquierda y derecha para que el centro no se pise */
-    padding-left:118px!important;
-    padding-right:74px!important; /* hueco para la burger a la derecha */
+    padding-left:118px!important;  
+    padding-right:16px!important;
   }
 
-  /* CENTRO: "Julio" */
   .nav-left{
     position:absolute!important;
     left:50%!important;
@@ -519,12 +516,10 @@ body.dark .app::before{
     text-overflow:ellipsis!important
   }
 
-  /* IZQUIERDA: idioma + claro/oscuro */
   .nav-right{
     display:flex!important;
     position:absolute!important;
     left:14px!important;
-    right:auto!important;
     top:50%!important;
     transform:translateY(-50%)!important;
     margin:0!important;
@@ -543,12 +538,10 @@ body.dark .app::before{
     justify-content:center!important
   }
 
-  /* DERECHA: burger */
   .burger-btn{
     display:inline-flex!important;
     position:absolute!important;
-    left:auto!important;
-    right:14px!important;  /* CLAVE: a la derecha */
+    right:22px!important;
     top:50%!important;
     transform:translateY(-50%)!important;
     width:36px!important;height:36px!important;
