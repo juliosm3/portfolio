@@ -419,7 +419,6 @@ body.dark .app::before{
 
 @media (max-width:768px){
 
-  /* Secciones: no cortar */
   section{
     min-height:auto!important;
     height:auto!important;
@@ -429,9 +428,6 @@ body.dark .app::before{
     text-align:center!important
   }
 
-  /* =========================================
-     HERO: centrado + 1 pantalla (todo cabe)
-  ========================================= */
   .hero{
     display:flex!important;
     flex-direction:column!important;
@@ -492,10 +488,6 @@ body.dark .app::before{
 
   .hero-social a{width:46px!important;height:46px!important}
 
-  /* =========================================
-     NAVBAR móvil: iconos izquierda / Julio centro / burger derecha
-     (NO tocar Julio ni burger)
-  ========================================= */
   .navbar-glass{top:12px!important}
   .nav-center{display:none!important}
 
@@ -505,10 +497,8 @@ body.dark .app::before{
     min-height:48px!important;
     align-items:center!important;
     justify-content:center!important;
-
-    /* Más reserva para que los iconos NO pisen el nombre */
-    padding-left:118px!important;  /* 2 iconos */
-    padding-right:64px!important   /* burger */
+    padding-left:118px!important;  
+    padding-right:16px!important;
   }
 
   .nav-left{
@@ -526,7 +516,6 @@ body.dark .app::before{
     text-overflow:ellipsis!important
   }
 
-  /* Grupo iconos pegado a la izquierda (sin mover burger) */
   .nav-right{
     display:flex!important;
     position:absolute!important;
@@ -549,7 +538,7 @@ body.dark .app::before{
     justify-content:center!important
   }
 
-.burger-btn{
+  .burger-btn{
   display:inline-flex!important;
   position:absolute!important;
 
@@ -572,13 +561,8 @@ body.dark .app::before{
   z-index:4!important;
 }
 
-
-
   .burger-btn svg{width:20px!important;height:20px!important;display:block!important}
 
-  /* =========================================
-     ABOUT mobile: no cortar por derecha
-  ========================================= */
   .about,.projects,.contact,.tech{width:100%}
 
   .about-card{
@@ -601,10 +585,6 @@ body.dark .app::before{
   .stat span{font-size:1.5rem!important}
   .stat p{font-size:.75rem!important}
 
-  /* =========================================
-     TECHNOLOGIES: carrusel + flechas pro/premium a los lados (solo móvil)
-  ========================================= */
-
   .tech-carousel{
     width:100%!important;
     max-width:calc(100vw - 2rem)!important;
@@ -615,7 +595,6 @@ body.dark .app::before{
     justify-content:center!important
   }
 
-  /* Track scroll */
   .tech-grid.tech-scroll{
     width:100%!important;
     max-width:calc(100vw - 2rem)!important;
@@ -631,7 +610,6 @@ body.dark .app::before{
 
     gap:14px!important;
 
-    /* hueco para las flechas laterales */
     padding:12px 56px!important;
 
     scrollbar-width:none!important
@@ -646,7 +624,6 @@ body.dark .app::before{
     min-width:0!important
   }
 
-  /* Flechas a los lados, premium */
   .tech-arrow{
     display:inline-flex!important;
     position:absolute!important;
@@ -677,6 +654,5 @@ body.dark .app::before{
   .tech-arrow-left{left:8px!important}
   .tech-arrow-right{right:8px!important}
 
-  /* Evitar flechas dobles (pseudo) */
   .tech-grid::before,.tech-grid::after{content:none!important;display:none!important}
 }
