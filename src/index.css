@@ -414,6 +414,9 @@ body.dark .app::before{
   font-size:18px
 }
 
+/* Desktop: ocultar flechas Technologies */
+.tech-arrow{display:none!important}
+
 
 /*====================================MOBILE=====================================*/
 
