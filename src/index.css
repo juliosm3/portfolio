@@ -550,21 +550,23 @@ body.dark .app::before{
   }
 
   /* Burger EXACTO a la derecha */
-  .burger-btn{
-    display:inline-flex!important;
-    position:fixed!important;
-    right:22px!important;
-    top:50%!important;
-    transform:translateY(-50%)!important;
-    width:36px!important;height:36px!important;
-    border-radius:50%!important;
-    padding:0!important;
-    border:none!important;
-    background:rgba(11,46,111,.12)!important;
-    align-items:center!important;
-    justify-content:center!important;
-    z-index:4!important
-  }
+.burger-btn{
+  display:inline-flex!important;
+  position:fixed!important;
+  right:22px!important;     /* se queda pegado a la derecha */
+  top:18px!important;       /* misma altura que tu navbar */
+  transform:none!important; /* quitamos el centrado vertical */
+  width:36px!important;
+  height:36px!important;
+  border-radius:50%!important;
+  padding:0!important;
+  border:none!important;
+  background:rgba(11,46,111,.12)!important;
+  align-items:center!important;
+  justify-content:center!important;
+  z-index:9999!important;   /* aseguramos que quede encima */
+}
+
 
   .burger-btn svg{width:20px!important;height:20px!important;display:block!important}
 
